@@ -1,0 +1,76 @@
+CREATE DATABASE IF NOT EXISTS Hospital_db;
+
+USE Hospital_db;
+
+CREATE TABLE IF NOT EXISTS Patients (
+patient_id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(100),
+age INT,
+gender CHAR(1),
+contact VARCHAR(15),
+admission_date DATE
+);
+
+CREATE TABLE IF NOT EXISTS Doctor (
+doctor_id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(100),
+speciality VARCHAR(100),
+Experience_year INT
+);
+
+CREATE TABLE IF NOT EXISTS Appointments (
+appointment_id INT PRIMARY KEY AUTO_INCREMENT,
+patient_id INT,
+doctor_id INT,
+appointment_date DATE,
+status VARCHAR(20),
+FOREIGN KEY (patient_id) REFERENCES Patients(patient_id),
+FOREIGN KEY (doctor_id) REFERENCES Doctor(doctor_id) 
+);
+
+INSERT INTO Patients (name, age, gender, contact) VALUES
+('Ananya sharma', 25, 'f', '9876543210'),
+('Ravi kumar', '40', 'M', '9823456789'),
+('Priya Varma', '30', 'f', '9871234567'),
+('Aman joshi', '50', 'm', '9834567890');
+
+INSERT INTO Doctor (name, speciality) VALUES
+('Dr.mehta', 'Cardiology'),
+('Dr.sen', 'neurology'),
+('Dr.Iyer', 'orthopedices');
+
+INSERT INTO Appointments (patient_id, doctor_id, appointment_date, status) VALUES
+(1, 1, '2025-08-01', 'Completed'), 
+(2, 2, '2025-08-03', 'Scheduled'),
+(3, 1, '2025-08-05', 'Cancelled'),
+(4, 3, '2025-08-06', 'Completed');
+
+SELECT * FROM Patients;
+
+SELECT name, contact FROM Patients;
+
+SELECT * FROM Patients WHERE age > 40;
+
+SELECT * FROM Patients WHERE age > 40
+AND gender = 'Male';
+
+SELECT * FROM Doctor WHERE name LIKE 'Dr.%';
+
+SELECT * FROM Patients WHERE admission_date BETWEEN '2025-07-01' AND '2025-08-01';
+
+SELECT * FROM Doctor ORDER BY experience_year ASC; 
+
+SELECT * FROM Doctor ORDER BY experience_year DESC;
+
+SELECT * FROM Appointments LIMIT 3;
+
+SELECT name AS Patientname, age AS Age FROM Patients;
+
+SELECT DISTINCT gender FROM Patients;
+
+SELECT * FROM Patients WHERE gender IN ('Female');
+
+SELECT * FROM Patients ORDER BY age;
+
+
+  
