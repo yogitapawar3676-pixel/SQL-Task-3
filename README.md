@@ -117,16 +117,4 @@ SELECT queries
 
 
 
----
 
-#What You'll Get Out of This Task
-
-You’ll understand how to get data from a database using different types of SELECT queries.
-
-You'll be more confident in filtering, sorting, and formatting results.
-
-
-
----
-
-Let me know if you'd like this in .txt, .md, or .pdf format!
